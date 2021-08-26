@@ -10,6 +10,7 @@ As estruturas de dados a serem criadas são:
   * insertion sort
   * bubble sort
   * merge sort
+  * quick sort
 
 * Algoritmos de Busca
   * binary search
