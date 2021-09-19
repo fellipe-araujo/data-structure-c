@@ -24,3 +24,14 @@ POINT createNewNode(TYPEKEY k) {
 
   return(newNode);
 }
+
+POINT insertNode(POINT root, POINT node) {
+  if (root == NULL) return(node);
+  if (node->key < root->key) {
+    root->left = insertNode(root->left, node);
+  } else {
+    root->right = insertNode(root->right, node);
+  }
+
+  return(root);
+}
