@@ -35,3 +35,13 @@ POINT insertNode(POINT root, POINT node) {
 
   return(root);
 }
+
+POINT search(TYPEKEY k, POINT root) {
+  if (root == NULL) return(NULL);
+  if (root->key == k) return(root);
+  if (root->key > k) {
+    return (search(k, root->right));
+  }
+
+  return(search(k, root->right));
+}
