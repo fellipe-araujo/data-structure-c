@@ -45,3 +45,15 @@ POINT search(TYPEKEY k, POINT root) {
 
   return(search(k, root->right));
 }
+
+void printTree(POINT root) {
+  if (root != NULL) {
+    printf("%i", root->key);
+    printf("(");
+
+    printTree(root->left);
+    printTree(root->right);
+
+    printf(")");
+  }
+}
