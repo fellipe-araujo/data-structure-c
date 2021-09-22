@@ -57,3 +57,22 @@ void printTree(POINT root) {
     printf(")");
   }
 }
+
+POINT searchNodeAux(POINT root, TYPEKEY k, POINT *father) {
+  POINT current = root;
+  *father = NULL;
+
+  while (current) {
+    if (current->key == k) return(current);
+
+    *father = current;
+
+    if (k < current->key) {
+      current = current->left;
+    } else {
+      current = current->right;
+    }
+  }
+
+  return(NULL);
+}
