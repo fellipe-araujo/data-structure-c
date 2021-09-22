@@ -76,3 +76,46 @@ POINT searchNodeAux(POINT root, TYPEKEY k, POINT *father) {
 
   return(NULL);
 }
+
+POINT removeNode(POINT root, TYPEKEY k) {
+  POINT father, node, p, q;
+  node = searchNodeAux(root, k, &father);
+
+  if (node == NULL) return(root);
+  if (!node->left || !node->right) {
+    if (!node->left) {
+      q = node->right;
+    } else {
+      q = node->left;
+    }
+  } else {
+    p = node;
+    q = node->left;
+
+    while (q->right) {
+      p = q;
+      q = q->right;
+    }
+
+    if (p != node) {
+      p->right = q->left;
+      q->left = node->left;
+    }
+
+    q->right = node->right;
+  }
+
+  if (!father) {
+    free(node);
+    return(q);
+  }
+
+  if (k < father->key) {
+    father->left = q;
+  } else {
+    father->right = q;
+  }
+
+  free(node);
+  return(root);
+}
